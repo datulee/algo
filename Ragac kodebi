@@ -1,0 +1,102 @@
+# Sorting Algorithms
+
+def bubble_sort(arr):
+    # Implementation of Bubble Sort
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+
+def merge_sort(arr):
+    # Implementation of Merge Sort
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i = j = k = 0
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+
+# Time Complexity
+
+def example_function(n):
+    # Example function with time complexity O(n^2)
+    for i in range(n):
+        for j in range(n):
+            # Some constant time operations
+            pass
+
+
+# Linked Lists
+
+class Node:
+    # Node class for Linked List
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    # Linked List class
+    def __init__(self):
+        self.head = None
+
+
+# Hashing
+
+def simple_hash(key):
+    # Simple Hash Function
+    return sum(ord(char) for char in key)
+
+
+# Binary Search Trees (BST)
+
+class TreeNode:
+    # Node class for Binary Search Tree (BST)
+    def __init__(self, key):
+        self.key = key
+        self.left = self.right = None
+
+
+def insert_bst(root, key):
+    # Insertion in Binary Search Tree (BST)
+    if root is None:
+        return TreeNode(key)
+    if key < root.key:
+        root.left = insert_bst(root.left, key)
+    else:
+        root.right = insert_bst(root.right, key)
+    return root
+
+
+# Binary Tree Traversal
+
+def inorder_traversal(root):
+    # In-order Traversal of Binary Tree
+    if root:
+        inorder_traversal(root.left)
+        print(root.key, end=" ")
+        inorder_traversal(root.right)
